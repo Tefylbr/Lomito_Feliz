@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Listado de mascotas disponibles</h1>  
+
+{% for RegistroMascota in lista_mascota %}
+    {% if RegistroMascota.Nombreadoptante == 'Disponible' %}
+        {% if RegistroMascota.Apellidoadoptante == 'Disponible' %}
+            <br><div class="col-md-7">
+                <div class="list-group-item"> <img class="rounded-circle account-img" src="{{RegistroMascota.imagen.url}}" >
+                <ul class="list-group-item">
+                <h2 class="account-heading"> {{RegistroMascota.nombre}} </h2>
+                <li class="list-group-item"> ID: {{RegistroMascota.id}}</li>
+                <li class="list-group-item"> Tipo de comida: {{RegistroMascota.alimentacion}}</li>
+                <li class="list-group-item"> Edad: {{RegistroMascota.edad}}</li>
+                <li class="list-group-item"> Fecha de rescate: {{RegistroMascota.fecha_de_rescate|date:"d F Y P "}}</li>
+                <li class="list-group-item"> Raza: {{RegistroMascota.raza}}</li>
+                <li class="list-group-item"> Enfermedades: {{RegistroMascota.enfermedades}}</li>
+                </ul>
+                </div>
+                </div>
+        {% endif %}
+    {% else %}
+        <h1>Ya adoptaron a esta mascota!</h1>
+    {% endif %}
+{% endfor %}
+{% endblock content %}

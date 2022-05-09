@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+{% for RegistroMascota in lista_catalogo %}
+{% if RegistroMascota.Nombreadoptante == user.first_name %}
+  {% if RegistroMascota.Apellidoadoptante == user.last_name %}
+    <div class="content-section">
+       <img class="rounded-circle account-img" src="{{RegistroMascota.imagen.url}}" >
+       <h2> {{RegistroMascota.nombre}}</h2>
+       <div class="media-body">
+         <ul>
+       <li> ID: {{RegistroMascota.id}}</li>
+       <li>Alimentación :{{RegistroMascota.alimentacion}}</li>
+       <li> Actualizar alimentacion<form method="POST">   {% csrf_token %}
+         {{ tipocomida }}
+         <div class="form-group">
+           
+           <button class="btn btn-outline-info" type="summit">
+             Actualizar comida
+           </button>
+       </div>
+         </form>          
+       </li>
+       <li> Edad: {{RegistroMascota.edad}}</li>
+       <li> Fecha de rescate: {{RegistroMascota.fecha_de_rescate|date:"d F Y P "}}</li>
+       <li> Raza: {{RegistroMascota.raza}}</li>
+       <li> Enfermedades: {{RegistroMascota.enfermedades}}</li>
+       </ul>
+       </div>
+     </div>
+   {% endif %}
+  {% endif %}
+{% endfor %}
+
+
+
+{% endblock content %}
