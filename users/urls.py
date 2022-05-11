@@ -1,8 +1,9 @@
 from django.urls import path
-from . import views
+from mascota.views import *
+from .views import *
 
 
 urlpatterns = [
-    path('', views.profile, name='profile'),
-    path('mismascotas/', views.mismascotas, name='mismascotas')
+    path('', profile, name='profile'),
+    path('mismascotas/', Mismascotaslist.as_view(), name='mismascotas')
 ]

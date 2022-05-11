@@ -5,7 +5,7 @@ from PIL import Image
 class RegistroMascota (models.Model):
     imagen           = models.ImageField(default='default.jpg', upload_to='fotos_mascotas')
     alimentacion     = models.CharField(max_length= 50)
-    vacunacion       = models.CharField(max_length= 100)
+    vacunacion       = models.CharField(max_length= 100, null=True)
     edad             = models.CharField(max_length= 30)
     fecha_de_rescate = models.DateTimeField(default=timezone.now)
     raza             = models.CharField(max_length= 50)

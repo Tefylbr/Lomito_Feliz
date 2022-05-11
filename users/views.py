@@ -6,6 +6,8 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from mascota.models import *
 from mascota.forms import *
+from django.utils.decorators import method_decorator
+from django.views.generic import UpdateView, ListView, CreateView
 
 
 def register(request):
@@ -49,20 +51,16 @@ def profile(request):
 
     return render(request, 'profile.html', context)
 
-@login_required
-def mismascotas (request):
-    lista_catalogo = RegistroMascota.objects.all()
-    if request.method == 'POST':
-        tipocomida = CambiarComida(request.POST,instance=request.RegistroMascota)
-        if tipocomida.is_valid():
-            tipocomida.save()
-            messages.success(request, f'La comida ha sido actualizada')
-            return redirect('mismascotas')
-    else:
-        tipocomida= CambiarComida()
-    context = {
-        'tipocomida':tipocomida,
-        'lista_catalogo': lista_catalogo, 
-    }
 
-    return render(request, 'mismascotas.html', context)   
+class Mismascotaslist(ListView):
+    model = RegistroMascota
+    template_name = 'mismascotas.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title']='Listado de mis mascotas'
+        return context

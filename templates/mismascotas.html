@@ -1,7 +1,44 @@
-{% extends "base.html" %}
+{% extends "listas.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
+{% block columnas %}
+<tr>
+  <th scope ="col">Nro</th>
+  <th scope="col">Nombre Mascota</th>
+  <th scope="col">imagen</th>
+  <th scope="col">Opciones</th>
+</tr>
+{% endblock %}
 
+
+{% block rows %}
+  {% for c in object_list %}
+    {% if c.Nombreadoptante == user.first_name %}
+      {% if c.Apellidoadoptante == user.last_name %}
+    <tr>
+      <td>{{c.id}}</td>
+      <td>{{c.nombre}}</td>
+      <td>
+        <a href="{{c.imagen.url}}"><img class="rounded-circle account-img " src="{{c.imagen.url}}" width="50" ></a></td>
+      <td>
+        <button type="button" class="btn btn-warning btn-xs btn-flat">
+          <i class="fas fa-edit"></i>
+        </button>
+      </td>
+    </tr>
+      {% endif %}
+    {% endif %}  
+  {% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+<!-- 
 {% for RegistroMascota in lista_catalogo %}
 {% if RegistroMascota.Nombreadoptante == user.first_name %}
   {% if RegistroMascota.Apellidoadoptante == user.last_name %}
@@ -31,8 +68,4 @@
      </div>
    {% endif %}
   {% endif %}
-{% endfor %}
-
-
-
-{% endblock content %}
+{% endfor %} -->

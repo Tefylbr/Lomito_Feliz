@@ -1,11 +1,17 @@
 from cProfile import label
 from pyexpat import model
+from click import option
 from django.forms import *
 from matplotlib import image
 from .models import *
 
-
+Vacunas={
+        ('Parvovirus y moquillo','Parvovirus y moquillo'),
+        ('Polivalente','Polivalente'),
+        ('Contra la rabia','Contra la rabia'),
+    }
 class Agregarmascota (ModelForm):
+  
     class Meta:
         model = RegistroMascota 
         fields = [
@@ -15,7 +21,8 @@ class Agregarmascota (ModelForm):
             'fecha_de_rescate',
             'raza',
             'enfermedades',
-            'imagen'
+            'imagen',
+            'vacunacion',
             ]
         labels = {
             'nombre':'Nombre',
@@ -25,6 +32,7 @@ class Agregarmascota (ModelForm):
             'raza': 'Raza',
             'enfermedades': 'Enfermedades',
             'imagen': 'Imagen',
+            'vacunacion':'Vacunas aplicadas'
         }
         widgets = {
             'nombre': TextInput(attrs={'class':'form-control'}),
@@ -33,15 +41,21 @@ class Agregarmascota (ModelForm):
             'fecha_de_rescate':DateInput(format=('%Y-%m-%d'),attrs={'class':'form-control','placeholder':'Fecha de rescate','type':'date'}),
             'raza': TextInput(attrs={'class':'form-control'}),
             'enfermedades': TextInput(attrs={'class':'form-control'}),
+            'vacunacion': CheckboxSelectMultiple(choices=Vacunas)
         }
 
 class CambiarComida(ModelForm):
     class Meta:
         model = RegistroMascota
-        fields = ['alimentacion']
+        fields = ['alimentacion','id']
         labels = {
-            'alimentacion':''
+            'alimentacion':'',
+            'id':'id'
         }
         widgets = {
-            
+                'ID': TextInput(
+                attrs={
+                    'readonly':'readonly',
+                }
+            )
         }

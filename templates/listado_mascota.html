@@ -15,12 +15,13 @@
                 <li class="list-group-item"> Fecha de rescate: {{RegistroMascota.fecha_de_rescate|date:"d F Y P "}}</li>
                 <li class="list-group-item"> Raza: {{RegistroMascota.raza}}</li>
                 <li class="list-group-item"> Enfermedades: {{RegistroMascota.enfermedades}}</li>
+                <li class="list-group-item"> Vacunas: {{RegistroMascota.vacunacion}}</li>
                 </ul>
                 </div>
                 </div>
         {% endif %}
-    {% else %}
-        <h1>Ya adoptaron a esta mascota!</h1>
     {% endif %}
 {% endfor %}
+
+
 {% endblock content %}
