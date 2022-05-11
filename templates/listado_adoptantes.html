@@ -1,0 +1,33 @@
+{% extends "listas.html" %}
+{% load crispy_forms_tags %}
+{% block columnas %}
+<tr>
+    <th scope="col">Id</th>
+  <th scope ="col">Nombre completo</th>
+  <th scope="col">Edad</th>
+  <th scope="col">Correo</th>
+  <th scope="col">Telefono</th>
+  <th scope="col">Estado de Adopción</th>
+</tr>
+{% endblock %}
+
+
+{% block rows %}
+  {% for c in object_list %}
+
+    <tr>
+      <td>{{c.id}}</td>
+      <td>{{c.Nombre}}</td>
+      <td>{{c.Edad}}</td>
+      <td>{{c.Telefono}}</td>
+      <td>{{c.Estado}}</td>
+      <td>
+        <a href="{% url 'ver_adoptante' c.id %}" type="button" class="btn btn-primary btn-xs btn-flat">
+          <i class="fa-solid fa-expand"></i>
+        </a>
+    </td>
+    </tr>
+
+
+  {% endfor %}
+{% endblock %}

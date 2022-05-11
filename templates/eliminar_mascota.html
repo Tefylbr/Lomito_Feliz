@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST">     {% csrf_token %}
+  <div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-minus"></i>
+            {{ title }}
+        </h3>
+    </div>
+    <div class="card-body">
+    <h3>Estás seguro de eliminar a la mascota: {{ object.nombre}}</h3> 
+    </div>
+    <div class="card-footer">
+      <button  type="submit" class="btn btn-primary btn-flat">
+        Si, aceptar
+      </button>
+      <a href="{% url 'listadotodasmascotas' %}" class="btn btn-warning btn-flat" role="button" aria-pressed="true">Cancelar</a>
+    </div>
+  </div>
+
+</form>
+{% endblock content %}

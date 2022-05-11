@@ -15,6 +15,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('mascotas/', include('mascota.urls')),
     path('profile/', include('users.urls')),
+    path('listado_adoptantes/', include('adoptante.urls')),
     path('formulario/',adop_views.solicitud, name= 'formulario'),
       path('password-reset/',
          auth_views.PasswordResetView.as_view(

@@ -25,7 +25,7 @@
           {% if user.is_authenticated %}
             {% if request.user|has_group:"admin" %}
             <li class="nav-item">
-              <a class="nav-link" href="/admin/">admin</a>
+              <a class="nav-link" href="/admin/">Administrador</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
@@ -38,6 +38,7 @@
                 Mascotas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'listado_adoptantes' %}">Listado de adoptantes</a>
                 <a class="dropdown-item" href="{% url 'listado_mascota' %}">Mascotas disponibles</a>
                 <a class="dropdown-item" href="{% url 'listadotodasmascotas' %}">Todas las mascotas</a>
                 <a class="dropdown-item" href="{% url 'registro_mascota' %}">Registrar mascota</a>
@@ -56,6 +57,7 @@
                 Mascotas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'listado_adoptantes' %}">Listado de adoptantes</a>
                 <a class="dropdown-item" href="{% url 'listado_mascota' %}">Mascotas disponibles</a>
                 <a class="dropdown-item" href="{% url 'listadotodasmascotas' %}">Todas las mascotas</a>
                 <a class="dropdown-item" href="{% url 'registro_mascota' %}">Registrar mascota</a>

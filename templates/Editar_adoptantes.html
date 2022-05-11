@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<form method="POST" enctype="multipart/form-data">
+  <div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fa-solid fa-heart"></i>
+            {{ title }}
+        </h3>
+    </div>
+    <div class="card-body">
+      {% csrf_token %}
+      {{ form | crispy }}
+
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary btn-flat">
+          <i class="fas fa-plus"></i> Actualizar estado del proceso
+      </button>
+      <a href="{% url 'listadotodasmascotas' %}" class="btn btn-primary btn-flat" role="button" aria-pressed="true">Ver todas las mascotas</a>
+    </div>
+  </div>
+</form>
+
+</tbody>
+</table>
+
+{% endblock content %}

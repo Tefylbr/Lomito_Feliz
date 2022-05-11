@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from matplotlib.style import context
 from .forms import *
-from django.views.generic import UpdateView, ListView, CreateView
+from django.views.generic import UpdateView, ListView, CreateView, DeleteView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
@@ -62,4 +62,15 @@ class EditarMascotas(UpdateView):
         context['title']='Editar una mascota'
         context['entity']='RegistroMascota'
         context['action']='edit'
+        return context
+
+class EliminarMascota(DeleteView):
+    model = RegistroMascota
+    template_name = 'eliminar_mascota.html'
+    success_url = reverse_lazy('listado_mascota')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title']='Eliminar una mascota'
+        context['entity']='RegistroMascota'
         return context

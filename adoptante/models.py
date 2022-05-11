@@ -9,7 +9,7 @@ class SolicitudAdop (models.Model):
     Domicilio  = models.CharField(max_length=100)
     NumeroMasc = models.IntegerField()
     Razones    = models.CharField(max_length=150)
-    Estado   = models.CharField(max_length=15, default='En proceso')
+    Estado   = models.CharField(max_length=50, default='Solicitud enviada')
 
 
     def __str__(self):
