@@ -19,9 +19,9 @@
       <td>
         <a href="{{c.imagen.url}}"><img class="rounded-circle account-img " src="{{c.imagen.url}}" width="50" ></a></td>
       <td>
-        <button type="button" class="btn btn-warning btn-xs btn-flat">
+        <a href="{% url 'editar_mascota' c.id %}" type="button" class="btn btn-warning btn-xs btn-flat">
           <i class="fas fa-edit"></i>
-        </button>
+        </a>
         <button type="button" class="btn btn-danger btn-xs btn-flat">
             <i class="fas fa-trash-alt"></i>
         </button>  

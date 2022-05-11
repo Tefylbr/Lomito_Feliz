@@ -33,6 +33,8 @@ class CreateMascota(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title']='Registrar una mascota'
+        context['entity']='RegistroMascota'
+        context['action']='add'
         return context
 
 
@@ -47,4 +49,17 @@ class TodasMascotaslist(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title']='Listado de mascotas'
+        return context
+
+class EditarMascotas(UpdateView):
+    model = RegistroMascota
+    form_class = EditarMascota
+    template_name = 'Editar_mascota.html'
+    success_url = reverse_lazy('listado_mascota')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title']='Editar una mascota'
+        context['entity']='RegistroMascota'
+        context['action']='edit'
         return context

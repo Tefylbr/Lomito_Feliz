@@ -44,6 +44,46 @@ class Agregarmascota (ModelForm):
             'vacunacion': CheckboxSelectMultiple(choices=Vacunas)
         }
 
+class EditarMascota(ModelForm):
+    class Meta:
+        model = RegistroMascota 
+        fields = [
+            'nombre',
+            'edad',
+            'alimentacion',
+            'fecha_de_rescate',
+            'raza',
+            'enfermedades',
+            'imagen',
+            'vacunacion',
+            'Nombreadoptante',
+            'Apellidoadoptante',
+            ]
+        labels = {
+            'nombre':'Nombre',
+            'edad': 'Edad',
+            'alimentacion':'Alimentacion',
+            'fecha_de_rescate':'Fecha de rescate',
+            'raza': 'Raza',
+            'enfermedades': 'Enfermedades',
+            'imagen': 'Imagen',
+            'vacunacion':'Vacunas aplicadas',
+            'Nombreadoptante':'Nombres del adoptante',
+            'Apellidoadoptante':'Apellidos del adoptante',
+        }
+        widgets = {
+            'nombre': TextInput(attrs={'class':'form-control'}),
+            'edad': TextInput(attrs={'class':'form-control'}),
+            'alimentacion':TextInput(attrs={'class':'form-control'}),
+            'fecha_de_rescate':DateInput(format=('%Y-%m-%d'),attrs={'class':'form-control','placeholder':'Fecha de rescate','type':'date'}),
+            'raza': TextInput(attrs={'class':'form-control'}),
+            'enfermedades': TextInput(attrs={'class':'form-control'}),
+            'vacunacion': CheckboxSelectMultiple(choices=Vacunas),
+            'Nombreadoptante': TextInput(attrs={'class':'form-control'}),
+            'Apellidoadoptante': TextInput(attrs={'class':'form-control'}),
+        }
+
+
 class CambiarComida(ModelForm):
     class Meta:
         model = RegistroMascota
