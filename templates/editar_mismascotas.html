@@ -1,23 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
+{% load crispy_forms_tags %}
 <form method="POST" enctype="multipart/form-data">
   <div class="card card-default">
     <div class="card-header">
         <h3 class="card-title">
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-edit"></i>
             {{ title }}
         </h3>
     </div>
     <div class="card-body">
       {% csrf_token %}
-      {{ form }}
+      {{ form |crispy}}
 
     </div>
     <div class="card-footer">
       <button type="submit" class="btn btn-primary btn-flat">
           <i class="fas fa-plus"></i> Actualizar mascota
       </button>
-      <a href="{% url 'listadotodasmascotas' %}" class="btn btn-primary btn-flat" role="button" aria-pressed="true">Ver todas las mascotas</a>
+      <a href="{% url 'mismascotas' %}" class="btn btn-primary btn-flat" role="button" aria-pressed="true">Ver mis mascotas</a>
     </div>
   </div>
 </form>

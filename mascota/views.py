@@ -61,7 +61,6 @@ class EditarMascotas(UpdateView):
         context = super().get_context_data(**kwargs)
         context['title']='Editar una mascota'
         context['entity']='RegistroMascota'
-        context['action']='edit'
         return context
 
 class EliminarMascota(DeleteView):

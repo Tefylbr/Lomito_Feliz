@@ -8,6 +8,7 @@ from mascota.models import *
 from mascota.forms import *
 from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, ListView, CreateView
+from django.urls import reverse_lazy
 
 
 def register(request):
@@ -63,4 +64,17 @@ class Mismascotaslist(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title']='Listado de mis mascotas'
+        return context
+
+
+class EditarmisMascotas(UpdateView):
+    model = RegistroMascota
+    form_class = EditarMisMascota
+    template_name = 'editar_mismascotas.html'
+    success_url = reverse_lazy('mismascotas')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title']='Editar una mascota'
+        context['entity']='RegistroMascota'
         return context

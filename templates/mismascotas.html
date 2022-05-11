@@ -4,6 +4,8 @@
 <tr>
   <th scope ="col">Nro</th>
   <th scope="col">Nombre Mascota</th>
+  <th scope="col">Tipo de alimentacion</th>
+  <th scope="col">Vacunas</th>
   <th scope="col">imagen</th>
   <th scope="col">Opciones</th>
 </tr>
@@ -17,12 +19,14 @@
     <tr>
       <td>{{c.id}}</td>
       <td>{{c.nombre}}</td>
+      <td>{{c.alimentacion}}</td>
+      <td>{{c.vacunacion }}</td>
       <td>
         <a href="{{c.imagen.url}}"><img class="rounded-circle account-img " src="{{c.imagen.url}}" width="50" ></a></td>
       <td>
-        <button type="button" class="btn btn-warning btn-xs btn-flat">
+        <a href="{% url 'editar_mismascota' c.id %}" type="button" class="btn btn-warning btn-xs btn-flat">
           <i class="fas fa-edit"></i>
-        </button>
+        </a>
       </td>
     </tr>
       {% endif %}
